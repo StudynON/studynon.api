@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "nodemon",
+    "dev": "docker compose -f docker-compose.dev.yml up -d && nodemon",
     "start": "node dist/index.js",
     "lint": "npx eslint . --cache",
     "prepare": "husky install",
