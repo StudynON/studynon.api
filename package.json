@@ -8,7 +8,8 @@
     "dev": "nodemon",
     "start": "node dist/index.js",
     "lint": "npx eslint . --cache",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
   },
   "repository": {
     "type": "git",
