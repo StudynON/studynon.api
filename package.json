@@ -7,7 +7,8 @@
     "build": "tsc",
     "dev": "nodemon",
     "start": "node dist/index.js",
-    "lint": "npx eslint . --cache"
+    "lint": "npx eslint . --cache",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,7 @@
     "@typescript-eslint/eslint-plugin": "^5.39.0",
     "@typescript-eslint/parser": "^5.39.0",
     "eslint": "^8.24.0",
-    "husky": "^8.0.1",
+    "husky": "^8.0.0",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1",
