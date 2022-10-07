@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "prisma.prisma",
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "mikestead.dotenv",
+    "esbenp.prettier-vscode"
+  ]
+}
