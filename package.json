@@ -33,6 +33,7 @@
     "@typescript-eslint/parser": "^5.39.0",
     "eslint": "^8.24.0",
     "husky": "^8.0.0",
+    "lint-staged": "^13.0.3",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1",
