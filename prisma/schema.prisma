@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  id              String     @id @default(uuid())
+  name            String
+  email           String     @unique
+  password        String
+  profile_picture String
+  created_at      DateTime   @default(now())
+  updated_at      DateTime   @updatedAt
+  Material        Material[]
+
+  @@map("student")
+}
+
+model Material {
+  id              Int       @id @default(autoincrement())
+  media           String
+  link            String
+  title           String
+  lifetime_access Boolean
+  deadline        DateTime?
+  school          String
+  id_student      String
+  student         Student   @relation(fields: [id_student], references: [id], onDelete: Cascade)
+  id_category     Int
+  category        Category  @relation(fields: [id_category], references: [id])
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @updatedAt
+
+  @@map("material")
+}
+
+model Category {
+  id       Int        @id @default(autoincrement())
+  name     String
+  Material Material[]
+
+  @@map("category")
+}
