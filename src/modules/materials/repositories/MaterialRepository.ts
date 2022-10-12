@@ -50,4 +50,10 @@ export class MaterialRepository {
       data: material,
     });
   }
+
+  async delete(id: number) {
+    return await db.material.delete({
+      where: { id },
+    });
+  }
 }
