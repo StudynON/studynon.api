@@ -6,4 +6,8 @@ export default class Validate {
   public static isString = (param: string): boolean => {
     return typeof param == 'string' && typeof param != 'number';
   };
+
+  public static isNumber = (param: number): boolean => {
+    return !isNaN(param) && typeof param == 'number';
+  };
 }
