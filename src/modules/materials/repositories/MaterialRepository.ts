@@ -1,4 +1,4 @@
-import { IMaterial } from '../../../interfaces/IMaterial';
+import { IMaterial, IMaterialUpdate } from '../../../interfaces/IMaterial';
 import { prisma as db } from '../../../lib/prisma';
 
 export class MaterialRepository {
@@ -40,6 +40,14 @@ export class MaterialRepository {
           },
         },
       },
+    });
+  }
+
+  async update(material: IMaterialUpdate) {
+    const { id } = material;
+    return await db.material.update({
+      where: { id },
+      data: material,
     });
   }
 }
