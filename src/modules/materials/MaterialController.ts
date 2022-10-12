@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { MaterialRepository } from './repositories/MaterialRepository';
 import CreateMaterial from './useCase/CreateMaterial';
+import FindOneMaterial from './useCase/FindOneMaterial';
 
 const repository = new MaterialRepository();
 
@@ -12,5 +13,14 @@ export default class MaterialController {
     await createMaterial.execute(material);
 
     return res.send(201);
+  }
+
+  static async findOneById(req: Request, res: Response) {
+    const { id } = req.body;
+    const findOneMaterial = new FindOneMaterial(repository);
+
+    const material = await findOneMaterial.execute(id);
+
+    return res.status(200).json(material);
   }
 }
