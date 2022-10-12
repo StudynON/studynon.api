@@ -25,4 +25,21 @@ export class MaterialRepository {
       },
     });
   }
+
+  async findAll() {
+    return await db.material.findMany({
+      include: {
+        student: {
+          select: {
+            id: true,
+            email: true,
+            name: true,
+            profile_picture: true,
+            created_at: true,
+            updated_at: true,
+          },
+        },
+      },
+    });
+  }
 }
