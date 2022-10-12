@@ -129,34 +129,3 @@ export function validateIdMaterial(
 
   next();
 }
-
-export function validateIdMaterialUpdate(
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) {
-  const { id } = req.body;
-  const missingData: string[] = [];
-  const invalidData = [];
-
-  if (!id) {
-    missingData.push('id');
-  }
-
-  if (missingData.length > 0) {
-    throw new HttpException(
-      400,
-      `Missing required fields: ${missingData.join(', ')}`,
-    );
-  }
-
-  if (!Validate.isString(id)) {
-    invalidData.push('id');
-  }
-
-  if (invalidData.length > 0) {
-    throw new HttpException(400, `Invalid fields: ${invalidData.join(', ')}`);
-  }
-
-  next();
-}
