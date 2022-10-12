@@ -18,7 +18,7 @@ export default class MaterialController {
   }
 
   static async findOneById(req: Request, res: Response) {
-    const { id } = req.body;
+    const id = parseInt(req.params.id);
 
     const findOneMaterial = new FindOneMaterial(repository);
 
