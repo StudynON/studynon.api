@@ -1,12 +1,12 @@
 export interface IMaterial {
-  media: string;
-  link: string;
-  title: string;
-  lifetime_access: boolean;
-  deadline: Date | null;
-  school: string;
-  id_student: string;
+  deadline?: Date | null;
   id_category: number;
+  id_student: string;
+  lifetime_access: boolean;
+  link: string;
+  media: string;
+  school: string;
+  title: string;
 }
 
 export interface IMaterialUpdate extends IMaterial {
