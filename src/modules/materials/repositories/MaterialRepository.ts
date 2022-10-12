@@ -7,4 +7,22 @@ export class MaterialRepository {
       data: material,
     });
   }
+
+  async findOneById(id: number) {
+    return await db.material.findUnique({
+      where: { id },
+      include: {
+        student: {
+          select: {
+            id: true,
+            email: true,
+            name: true,
+            profile_picture: true,
+            created_at: true,
+            updated_at: true,
+          },
+        },
+      },
+    });
+  }
 }
