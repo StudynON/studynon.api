@@ -8,3 +8,7 @@ export interface IMaterial {
   id_student: string;
   id_category: number;
 }
+
+export interface IMaterialUpdate extends IMaterial {
+  id: number;
+}
