@@ -1,10 +1,16 @@
 import { Router } from 'express';
+import { validateIdMaterial, validateMaterial } from '../middlewares/materials';
 import MaterialController from '../modules/materials/MaterialController';
 
 export const materialRouter = Router();
 
-materialRouter.get('/:id', MaterialController.findOneById);
+materialRouter.get('/:id', validateIdMaterial, MaterialController.findOneById);
 
-materialRouter.post('/', MaterialController.create);
+materialRouter.post('/', validateMaterial, MaterialController.create);
 
-materialRouter.put('/:id', MaterialController.update);
+materialRouter.put(
+  '/:id',
+  validateIdMaterial,
+  validateMaterial,
+  MaterialController.update,
+);
