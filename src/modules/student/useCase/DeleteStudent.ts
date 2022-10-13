@@ -1,6 +1,6 @@
 import { StudentRepository } from '../reporitories/StudentRepository';
 
-export class CreateStudent {
+export class DeleteStudent {
   private repository;
 
   constructor(repository: StudentRepository) {
