@@ -2,7 +2,7 @@ import { hash } from 'bcrypt';
 import { IStudentUpdate } from '../../../interfaces/IStudent';
 import { StudentRepository } from '../reporitories/StudentRepository';
 
-export class CreateStudent {
+export class UpdateStudent {
   private repository;
 
   constructor(repository: StudentRepository) {
