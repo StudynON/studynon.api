@@ -1,4 +1,4 @@
-import {MaterialRepository} from '../repositories/MaterialRepository';
+import { MaterialRepository } from '../repositories/MaterialRepository';
 
 export default class DeleteMaterial {
   private repository;
@@ -7,8 +7,7 @@ export default class DeleteMaterial {
     this.repository = repository;
   }
 
-  public async execute(id: number){
-    await this.repository.delete(id);
+  public async execute(id: number) {
+    return await this.repository.delete(id);
   }
 }
-

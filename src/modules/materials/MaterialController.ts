@@ -30,14 +30,12 @@ export default class MaterialController {
   }
 
   static async findAll(req: Request, res: Response) {
-
     const findAllMaterial = new FindAllMaterial(repository);
 
     const material = await findAllMaterial.execute();
 
     return res.status(200).json(material);
   }
-
 
   static async update(req: Request, res: Response) {
     const id = parseInt(req.params.id);
