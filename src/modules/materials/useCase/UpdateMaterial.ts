@@ -1,4 +1,4 @@
-import { IMaterialUpdate } from '../../../interfaces/IMaterial';
+import { IMaterial } from '../../../lib/prisma';
 import { MaterialRepository } from '../repositories/MaterialRepository';
 
 export default class UpdateMaterial {
@@ -8,7 +8,7 @@ export default class UpdateMaterial {
     this.repository = repository;
   }
 
-  public async execute(material: IMaterialUpdate) {
-    await this.repository.update(material);
+  public async execute(id: number, material: IMaterial) {
+    await this.repository.update(id, material);
   }
 }
