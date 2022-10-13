@@ -4,6 +4,8 @@ import MaterialController from '../modules/materials/MaterialController';
 
 export const materialRouter = Router();
 
+materialRouter.get('/', validateMaterial, MaterialController.findAll);
+
 materialRouter.get('/:id', validateIdMaterial, MaterialController.findOneById);
 
 materialRouter.post('/', validateMaterial, MaterialController.create);
@@ -14,3 +16,5 @@ materialRouter.put(
   validateMaterial,
   MaterialController.update,
 );
+
+materialRouter.delete('/:id', validateIdMaterial, MaterialController.delete);
