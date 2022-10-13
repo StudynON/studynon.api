@@ -4,6 +4,8 @@ import { MaterialRepository } from './repositories/MaterialRepository';
 import CreateMaterial from './useCase/CreateMaterial';
 import FindOneMaterial from './useCase/FindOneMaterial';
 import UpdateMaterial from './useCase/UpdateMaterial';
+import FindAllMaterial from './useCase/FindAllMaterial';
+import DeleteMaterial from './useCase/DeleteMaterial';
 
 const repository = new MaterialRepository();
 
@@ -28,6 +30,16 @@ export default class MaterialController {
     return res.status(200).json(material);
   }
 
+  static async findAll(req: Request, res: Response) {
+
+    const findAllMaterial = new FindAllMaterial(repository);
+
+    const material = await findAllMaterial.execute();
+
+    return res.status(200).json(material);
+  }
+
+
   static async update(req: Request, res: Response) {
     const id = parseInt(req.params.id);
     const material = {
@@ -40,5 +52,15 @@ export default class MaterialController {
     await updateMaterial.execute(material);
 
     return res.sendStatus(201);
+  }
+
+  static async delete(req: Request, res: Response) {
+    const id = parseInt(req.params.id);
+
+    const deleteMaterial = new DeleteMaterial(repository);
+
+    await deleteMaterial.execute(id);
+
+    return res.status(200).json();
   }
 }
