@@ -4,7 +4,7 @@ import MaterialController from '../modules/materials/MaterialController';
 
 export const materialRouter = Router();
 
-materialRouter.get('/', validateMaterial, MaterialController.findAll);
+materialRouter.get('/', MaterialController.findAll);
 
 materialRouter.get('/:id', validateIdMaterial, MaterialController.findOneById);
 
