@@ -1,5 +1,6 @@
 import { hash } from 'bcrypt';
 import { IStudent } from '../../../interfaces/IStudent';
+import { HttpException } from '../../../errors/HttpException';
 import { StudentRepository } from '../reporitories/StudentRepository';
 
 export class CreateStudent {
@@ -17,7 +18,9 @@ export class CreateStudent {
   }: IStudent): Promise<void> {
     const student = await this.repository.findByEmail(email);
 
-    if (student) return;
+    if (student) {
+      throw new HttpException(400, 'student or email already exists');
+    }
 
     const hashedPassword = await hash(password, 14);
 
