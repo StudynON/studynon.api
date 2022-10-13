@@ -104,7 +104,7 @@ export function validateIdMaterial(
   res: Response,
   next: NextFunction,
 ) {
-  const { id } = req.body;
+  const id = parseInt(req.params.id);
   const missingData: string[] = [];
   const invalidData = [];
 
