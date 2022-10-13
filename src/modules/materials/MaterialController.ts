@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { IMaterialUpdate } from '../../interfaces/IMaterial';
 import { MaterialRepository } from './repositories/MaterialRepository';
 import CreateMaterial from './useCase/CreateMaterial';
 import FindOneMaterial from './useCase/FindOneMaterial';
@@ -42,14 +41,11 @@ export default class MaterialController {
 
   static async update(req: Request, res: Response) {
     const id = parseInt(req.params.id);
-    const material = {
-      id,
-      ...req.body,
-    } as IMaterialUpdate;
+    const { material } = req.body;
 
     const updateMaterial = new UpdateMaterial(repository);
 
-    await updateMaterial.execute(material);
+    await updateMaterial.execute(id, material);
 
     return res.sendStatus(201);
   }

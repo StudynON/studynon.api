@@ -8,7 +8,3 @@ export interface IMaterial {
   school: string;
   title: string;
 }
-
-export interface IMaterialUpdate extends IMaterial {
-  id: number;
-}

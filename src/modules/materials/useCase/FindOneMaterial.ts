@@ -8,6 +8,6 @@ export default class FindOneMaterial {
   }
 
   public async execute(id: number) {
-    await this.repository.findOneById(id);
+    return await this.repository.findOneById(id);
   }
 }
