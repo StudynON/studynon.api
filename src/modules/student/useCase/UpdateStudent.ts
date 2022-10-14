@@ -1,6 +1,6 @@
 import { hash } from 'bcrypt';
 import { IStudentUpdate } from '../../../interfaces/IStudent';
-import { StudentRepository } from '../reporitories/StudentRepository';
+import { StudentRepository } from '../repositories/StudentRepository';
 
 export class UpdateStudent {
   private repository;

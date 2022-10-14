@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { StudentRepository } from './reporitories/StudentRepository';
+import { StudentRepository } from './repositories/StudentRepository';
 import { CreateStudent } from './useCase/CreateStudent';
 
 const repository = new StudentRepository();

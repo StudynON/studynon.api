@@ -1,7 +1,7 @@
 import { hash } from 'bcrypt';
 import { IStudent } from '../../../interfaces/IStudent';
 import { HttpException } from '../../../errors/HttpException';
-import { StudentRepository } from '../reporitories/StudentRepository';
+import { StudentRepository } from '../repositories/StudentRepository';
 
 export class CreateStudent {
   private repository;
