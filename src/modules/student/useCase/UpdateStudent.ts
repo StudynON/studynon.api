@@ -1,5 +1,5 @@
 import { hash } from 'bcrypt';
-import { IStudentUpdate } from '../../../interfaces/IStudent';
+import { IStudent } from '../../../interfaces/IStudent';
 import { StudentRepository } from '../repositories/StudentRepository';
 
 export class UpdateStudent {
@@ -9,14 +9,17 @@ export class UpdateStudent {
     this.repository = repository;
   }
 
-  public async execute({
-    id,
+  public async execute(id: string, {
     name,
     email,
     profile_picture,
     password
-  }: IStudentUpdate): Promise<void> {
-    const hashedPassword = await hash(password, 14);
+  }: IStudent): Promise<void> {
+    let newPassword = password;
+
+    if(password) {
+      newPassword = await hash(newPassword, 14);
+    }
 
     await this.repository.update(
       id,
@@ -24,7 +27,7 @@ export class UpdateStudent {
       name,
       email,
       profile_picture,
-      password: hashedPassword,
-    } as IStudentUpdate);
+      password: newPassword,
+    } as IStudent);
   }
 }
