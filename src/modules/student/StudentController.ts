@@ -28,7 +28,7 @@ export default class StudentController {
     const { name, email, profile_picture, password } = req.body;
     const updateStudent = new UpdateStudent(repository);
 
-    await updateStudent.execute({ id, name, email, profile_picture, password });
+    await updateStudent.execute(id, { name, email, profile_picture, password });
 
     return res.sendStatus(200);
   }
