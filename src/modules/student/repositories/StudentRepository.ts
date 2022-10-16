@@ -1,4 +1,4 @@
-import { IStudent, IStudentUpdate } from '../../../interfaces/IStudent';
+import { IStudent } from '../../../interfaces/IStudent';
 import { prisma as db } from '../../../lib/prisma';
 
 export class StudentRepository {
@@ -9,20 +9,22 @@ export class StudentRepository {
   }
 
   async findByEmail(email: string) {
-    return await db.student.findUnique({
+    const studennt = await db.student.findUnique({
       where: { email: email },
     });
+
+    return studennt;
   }
 
-  async update(id: string, data: IStudentUpdate) {
-    return await db.student.update({
+  async update(id: string, data: IStudent) {
+    await db.student.update({
       where: { id },
       data,
     });
   }
 
   async delete(id: string) {
-    return await db.student.delete({
+    await db.student.delete({
       where: { id },
     });
   }

@@ -1,4 +1,4 @@
-import { StudentRepository } from '../reporitories/StudentRepository';
+import { StudentRepository } from '../repositories/StudentRepository';
 
 export class DeleteStudent {
   private repository;
