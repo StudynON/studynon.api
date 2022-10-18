@@ -14,11 +14,9 @@ export const requiredAuthentication = (req: Request, res: Response, next: NextFu
   const token = authorization.split(' ')[1];
 
   try {
-    const payload = <{student_id: string}>verify(token, jwt_secret);
+    const payload = <{id: string}>verify(token, jwt_secret);
 
-    // req.user = {
-    //   id: payload.student_id,
-    // };
+    req.user = payload;
 
     return next();
   } catch {
