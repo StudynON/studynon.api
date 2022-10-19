@@ -10,11 +10,11 @@ interface ILoginProps {
   password: string;
 }
 
-export class LoginStudant {
-  private studantRepository;
+export class LoginStudent {
+  private studentRepository;
 
-  constructor (studantRepository: StudentRepository) {
-    this.studantRepository = studantRepository;
+  constructor (studentRepository: StudentRepository) {
+    this.studentRepository = studentRepository;
   }
 
 
@@ -33,7 +33,7 @@ export class LoginStudant {
       throw new HttpException(400, `Ivalid fields: ${invalidData.join(', ')}`);
     }
 
-    const student = await this.studantRepository.findByEmail(email);
+    const student = await this.studentRepository.findByEmail(email);
 
     if (!student || !hash.compareSync(password, student.password)) {
       throw new HttpException(400, 'Invalid credentials.');
