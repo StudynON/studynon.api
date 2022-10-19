@@ -9,6 +9,7 @@ if (env === 'production') {
 }
 
 export const jwt_secret = process.env.JWT_SECRET as string;
+export const salt_rounds = 10;
 export const port = process.env.PORT || '3333';
 export const PG_CONFIG = {
   user: process.env.POSTGRES_USER,
