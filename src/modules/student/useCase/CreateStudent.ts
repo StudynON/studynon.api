@@ -1,4 +1,5 @@
 import { hash } from 'bcrypt';
+import { salt_rounds } from '../../../config/vars';
 import { IStudent } from '../../../interfaces/IStudent';
 import { HttpException } from '../../../errors/HttpException';
 import { StudentRepository } from '../repositories/StudentRepository';
@@ -22,7 +23,7 @@ export class CreateStudent {
       throw new HttpException(400, 'student or email already exists');
     }
 
-    const hashedPassword = await hash(password, 14);
+    const hashedPassword = await hash(password, salt_rounds);
 
     await this.repository.create({
       name,

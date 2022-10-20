@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
 import { StudentRepository } from './repositories/StudentRepository';
-import { CreateStudent } from './useCase/CreateStudent';
-import { DeleteStudent } from './useCase/DeleteStudent';
-import { UpdateStudent } from './useCase/UpdateStudent';
+import { CreateStudent, DeleteStudent, UpdateStudent } from './useCase/';
 
 const repository = new StudentRepository();
 
