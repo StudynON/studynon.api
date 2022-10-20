@@ -1,4 +1,5 @@
 export interface ICategory {
   id: number,
-  name: string
+  name: string,
+  color: string
 }
