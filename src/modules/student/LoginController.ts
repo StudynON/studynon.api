@@ -10,11 +10,13 @@ export default class LoginController {
 
     const loginStudent = new LoginStudent(studentRepository);
 
-    await loginStudent.execute({
+    const token = await loginStudent.execute({
       email,
       password
     });
 
-    return res.sendStatus(200);
+    return res.status(200).json({
+      token: token
+    });
   }
 }

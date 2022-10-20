@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { requiredAuthentication } from '../middlewares/authentication/requiredAuthentication';
 import { validateStudent, validateStudentId } from '../middlewares/student';
 import StudentController from '../modules/student/StudentController';
 
@@ -9,13 +10,15 @@ studentRouter.post('/',
   StudentController.create
 );
 
-studentRouter.put('/update/:id',
+studentRouter.put('/update',
+  requiredAuthentication,
   validateStudentId,
   validateStudent,
   StudentController.update
 );
 
-studentRouter.delete('/delete/:id',
+studentRouter.delete('/delete',
+  requiredAuthentication,
   validateStudentId,
   StudentController.delete
 );
