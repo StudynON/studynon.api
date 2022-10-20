@@ -30,7 +30,7 @@ export class LoginStudent {
     }
 
     if (invalidData.length) {
-      throw new HttpException(400, `Ivalid fields: ${invalidData.join(', ')}`);
+      throw new HttpException(400, `Invalid fields: ${invalidData.join(', ')}`);
     }
 
     const student = await this.studentRepository.findByEmail(email);
