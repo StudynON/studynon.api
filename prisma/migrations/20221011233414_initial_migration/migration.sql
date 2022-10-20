@@ -32,6 +32,7 @@ CREATE TABLE "material" (
 CREATE TABLE "category" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
+    "color" TEXT NOT NULL
 
     CONSTRAINT "category_pkey" PRIMARY KEY ("id")
 );
