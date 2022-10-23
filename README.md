@@ -13,18 +13,13 @@
 Com esse aplicativo, esse problema acaba. :heart_eyes:
 
 ## Stacks Utilizadas
-TypeScript 
-<br>
-Node.js
-<br>
-Docker
-<br>
-PostgreSQL
-<br>
-Prisma
-<br>
-Shell
-<br>
+- TypeScript 
+- Node.js
+- Docker
+- PostgreSQL
+- Prisma
+- Shell
+
 
 ## Dependências globais
 
