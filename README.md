@@ -18,7 +18,6 @@ Com esse aplicativo, esse problema acaba. :heart_eyes:
 - Docker
 - PostgreSQL
 - Prisma
-- Shell
 
 
 ## Dependências globais
