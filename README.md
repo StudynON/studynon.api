@@ -1,6 +1,6 @@
 ## Owlrange Back-end
 <p align="center">
-<img src="https://img.shields.io/badge/STTATUS-EM%20%20ANDAMENTO-blue"/>
+<img src="https://img.shields.io/badge/STATUS-EM%20%20ANDAMENTO-blue"/>
 </p>
 
 
@@ -14,6 +14,14 @@ Com esse aplicativo, esse problema acaba. :heart_eyes:
 
 ## Stack Utilizada
 TypeScript 
+<br>
+Node.js
+<br>
+Docker
+<br>
+PostgreSQL
+<br>
+Prisma
 <br>
 Shell
 <br>
@@ -49,7 +57,7 @@ Após baixar o repositório, não se esqueça de instalar as dependências locai
 yarn
 ```
 
-## Rodar o projeto
+## Dependência Global
 
 Para rodar o projeto localmente, basta rodar o comando abaixo:
 ```bash
@@ -61,6 +69,6 @@ yarn dev
 
 
 ## Dúvidas
-Para dúvidas sobre o projeto Mobile, ou para o projeto em geral, por gentileza verifique primeiramente se sua dúvida consegue ser sanada no canal de [status-projetos](https://discord.com/channels/847518545156112424/1031925706524999780) do servidor da Orange Juice no Discord.
+Para dúvidas sobre o projeto Back-End, ou para o projeto em geral, por gentileza verifique primeiramente se sua dúvida consegue ser sanada no canal de [status-projetos](https://discord.com/channels/847518545156112424/1031925706524999780) do servidor da Orange Juice no Discord.
 
 
