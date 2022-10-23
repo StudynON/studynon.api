@@ -54,7 +54,7 @@ E execute este codigo `ext install EditorConfig.EditorConfig`
 Após baixar o repositório, não se esqueça de instalar as dependências locais do projeto:
 
 ```bash
-yarn
+npm install yarn --global
 ```
 
 ## Rodar o  projeto
