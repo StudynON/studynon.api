@@ -49,7 +49,7 @@ Para usuarios do windows utilize a extensão editor config
 Inicie a abertura rápida do VS Code `CTRL+P`
 E execute este codigo `ext install EditorConfig.EditorConfig`
 
-## Dependências locais
+## Como instalar o yarn global
 
 Após baixar o repositório, não se esqueça de instalar as dependências locais do projeto:
 
@@ -57,7 +57,7 @@ Após baixar o repositório, não se esqueça de instalar as dependências locai
 yarn
 ```
 
-## Dependência Global
+## Rodar o  projeto
 
 Para rodar o projeto localmente, basta rodar o comando abaixo:
 ```bash
