@@ -1,24 +1,26 @@
-<h1>Owlrange Back-end</h1>
+## Owlrange Back-end
 <p align="center">
-<img src="https://img.shields.io/badge/STTATUS-EM%20%20ANDAMENTO-blue"/>
+<img src="https://img.shields.io/badge/STATUS-EM%20%20ANDAMENTO-blue"/>
 </p>
 
 
-<h2>Sobre nosso Projeto</h2>
+## Sobre nosso Projeto
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-<p>Projeto que tem como objetivo ajudar nos seus estudos.</p>
-<p>Todos nós já passamos pelo problema de ter muito material de estudo e não conseguir definir um passo a passo e/ou acompanhar o quanto do material ja foi estudado.</p>
-<p>Com esse aplicativo, esse problema acaba.</p>
+<p>Este projeto tem como objetivo ajudar  você nos seus estudos. :books:</p>
+<p>Todos nós já passamos pelo problema de ter muito material de estudo e não conseguir definir um passo a passo e/ou acompanhar o quanto do material ja foi estudado. :cry:</p>
+Com esse aplicativo, esse problema acaba. :heart_eyes:
 
-<h2>Tecnologias usadas na criação:</h2>
-TypeScript
-<br>
-Shell
-<br>
+## Stacks Utilizadas
+- TypeScript 
+- Node.js
+- Docker
+- PostgreSQL
+- Prisma
 
-### Dependências globais
+
+## Dependências globais
 
 Você precisa ter três dependencias instaladas:
 
@@ -41,15 +43,15 @@ Para usuarios do windows utilize a extensão editor config
 Inicie a abertura rápida do VS Code `CTRL+P`
 E execute este codigo `ext install EditorConfig.EditorConfig`
 
-### Dependências locais
+## Como instalar o yarn global
 
 Após baixar o repositório, não se esqueça de instalar as dependências locais do projeto:
 
 ```bash
-yarn
+npm install yarn --global
 ```
 
-### Rodar o projeto
+## Rodar o  projeto
 
 Para rodar o projeto localmente, basta rodar o comando abaixo:
 ```bash
@@ -57,4 +59,10 @@ yarn dev
 ```
 
 - Para reiniciar o servidor (docker compose), basta utilizar as teclas `rs` e enter no terminal que estiver rodando
+
+
+
+## Dúvidas
+Para dúvidas sobre o projeto Back-End, ou para o projeto em geral, por gentileza verifique primeiramente se sua dúvida consegue ser sanada no canal de [status-projetos](https://discord.com/channels/847518545156112424/1031925706524999780) do servidor da Orange Juice no Discord.
+
 
