@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { HttpException } from '../../errors/HttpException';
 import Validate from '../../helpers/validate-parameters';
 
-export function validateCategory(
+export function validateCategory (
   req: Request,
   res: Response,
   next: NextFunction
@@ -11,9 +11,14 @@ export function validateCategory(
     name,
     color
   } = req.body;
+  const studentId = req.user?.id as string;
 
   const missingData: string[] = [];
   const invalidData = [];
+
+  if(!studentId) {
+    missingData.push('student id');
+  }
 
   if(!name) {
     missingData.push('name');
@@ -30,6 +35,10 @@ export function validateCategory(
     );
   }
 
+  if (!Validate.isString(studentId)) {
+    invalidData.push('student id must be string');
+  }
+
   if (!Validate.isString(name)) {
     invalidData.push('name must be string');
   }
@@ -43,6 +52,43 @@ export function validateCategory(
       400,
       `Invalid fields: ${invalidData.join(', ')}`
     );
+  }
+
+  next();
+}
+
+export function validateIdCategory (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const { id } = req.body;
+
+  const missingData: string[] = [];
+  const invalidData = [];
+
+  if(id) {
+    if(!id) {
+      missingData.push('id');
+    }
+
+    if (missingData.length > 0) {
+      throw new HttpException(
+        400,
+        `Missing required fields: ${missingData.join(', ')}`,
+      );
+    }
+
+    if (!Validate.isNumber(id)) {
+      invalidData.push('id must be a number');
+    }
+
+    if (invalidData.length > 0) {
+      throw new HttpException(
+        400,
+        `Invalid fields: ${invalidData.join(', ')}`
+      );
+    }
   }
 
   next();
