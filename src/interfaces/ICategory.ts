@@ -1,5 +1,5 @@
 export interface ICategory {
-  id: number,
+  id_student: string,
   name: string,
   color: string
 }
