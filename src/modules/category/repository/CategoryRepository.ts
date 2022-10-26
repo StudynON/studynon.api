@@ -48,21 +48,10 @@ export class CategoryRepository {
     });
   }
 
-  async delete(id: number, studentId: string) {
-    await db.category.deleteMany({
+  async delete(id: number) {
+    await db.category.delete({
       where: {
-        AND: [
-          {
-            id: {
-              equals: id
-            }
-          },
-          {
-            id_student: {
-              equals: studentId
-            }
-          }
-        ]
+        id: id
       }
     });
   }
