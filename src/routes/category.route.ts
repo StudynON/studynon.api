@@ -13,7 +13,6 @@ categoryRouter.post('/',
 
 categoryRouter.post('/find-all',
   requiredAuthentication,
-  validateIdCategory,
   CategoryController.findAllCategories
 );
 
@@ -32,6 +31,6 @@ categoryRouter.put('/update',
 
 categoryRouter.delete('/delete',
   requiredAuthentication,
-  validateIdCategory, 
+  validateIdCategory,
   CategoryController.deleteCategory
 );
