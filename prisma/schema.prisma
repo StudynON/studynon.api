@@ -35,7 +35,7 @@ model Material {
   id_student      String
   student         Student   @relation(fields: [id_student], references: [id], onDelete: Cascade)
   id_category     Int
-  category        Category  @relation(fields: [id_category], references: [id])
+  category        Category  @relation(fields: [id_category], references: [id], onDelete: Cascade)
   created_at      DateTime  @default(now())
   updated_at      DateTime  @updatedAt
 
