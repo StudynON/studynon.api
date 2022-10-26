@@ -67,28 +67,26 @@ export function validateIdCategory (
   const missingData: string[] = [];
   const invalidData = [];
 
-  if(id) {
-    if(!id) {
-      missingData.push('id');
-    }
+  if(!id) {
+    missingData.push('id');
+  }
 
-    if (missingData.length > 0) {
-      throw new HttpException(
-        400,
-        `Missing required fields: ${missingData.join(', ')}`,
-      );
-    }
+  if (missingData.length > 0) {
+    throw new HttpException(
+      400,
+      `Missing required fields: ${missingData.join(', ')}`,
+    );
+  }
 
-    if (!Validate.isNumber(id)) {
-      invalidData.push('id must be a number');
-    }
+  if (!Validate.isNumber(id)) {
+    invalidData.push('id must be a number');
+  }
 
-    if (invalidData.length > 0) {
-      throw new HttpException(
-        400,
-        `Invalid fields: ${invalidData.join(', ')}`
-      );
-    }
+  if (invalidData.length > 0) {
+    throw new HttpException(
+      400,
+      `Invalid fields: ${invalidData.join(', ')}`
+    );
   }
 
   next();
