@@ -49,7 +49,11 @@ export function addToBlacklist({token, exp}: IBlacklistProps) {
 function onCacheExpire(key: string, { blockedTokens }: IBlockedTokensProps ){
   const nowInSeconds = Date.now() / 1000;
 
-  blockedTokens = blockedTokens.filter(({exp}: IBlacklistProps) => exp > nowInSeconds);
+  function checkTime({exp}: IBlacklistProps) {
+    return exp > nowInSeconds;
+  }
+
+  blockedTokens = blockedTokens.filter(checkTime);
 
   saveCache({ blockedTokens });
 }
