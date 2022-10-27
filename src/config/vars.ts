@@ -20,5 +20,5 @@ export const PG_CONFIG = {
 };
 
 export const blackListKey = 'blocked-tokens';
-export const blackListExpire = 3600; // 36e2;
-export const jwtTokenExpire = Math.floor(Date.now() / 1000) + 3600; // 600;
+export const blackListExpire = 3600;
+export const jwtTokenExpire = Math.floor(Date.now() / 1000) + 3600;

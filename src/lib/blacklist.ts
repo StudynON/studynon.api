@@ -19,9 +19,22 @@ function saveCache(value: IBlockedTokensProps): boolean {
   return myCache.set(KEY, value, blackListExpire);
 }
 
-export function getCache(): IBlockedTokensProps {
+function getCache(): IBlockedTokensProps {
   const cache: IBlockedTokensProps = myCache.get(KEY) || {blockedTokens: []};
   return cache;
+}
+
+export function verifyBlacklist(tokenToVerify: string): boolean {
+  const { blockedTokens } = getCache();
+  const { length } = blockedTokens;
+
+  for (let i = 0; i < length; i++) {
+    if (blockedTokens[i].token === tokenToVerify) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 export function addToBlacklist({token, exp}: IBlacklistProps) {
@@ -31,20 +44,14 @@ export function addToBlacklist({token, exp}: IBlacklistProps) {
   blockedTokens.push(newBlackListItem);
 
   saveCache({ blockedTokens });
-
-  console.log('Lists:', myCache.keys());
-
-  console.log('cache was saved?:', getCache());
-  console.log('cache ttl?:', myCache.getTtl(KEY));
 }
 
 function onCacheExpire(key: string, { blockedTokens }: IBlockedTokensProps ){
-  const now = Date.now() / 1000;
+  const nowInSeconds = Date.now() / 1000;
 
-  blockedTokens = blockedTokens.filter(({exp}: IBlacklistProps) => exp > now);
+  blockedTokens = blockedTokens.filter(({exp}: IBlacklistProps) => exp > nowInSeconds);
 
-  console.log('\n*** expired token ***\nEntrou na função', key, blockedTokens);
-  console.log('\n*** clear list ***\nlista limpa', blockedTokens);
+  saveCache({ blockedTokens });
 }
 
 myCache.on('expired', onCacheExpire);
