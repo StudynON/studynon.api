@@ -11,7 +11,7 @@ export class DeleteCategory {
   async execute(id: number, id_student: string): Promise<void> {
     const category = await this.repository.findOneById(id, id_student);
 
-    if (category?.id_student !== id_student) {
+    if (!category) {
       throw new HttpException(400, 'category does not exist');
     }
 
