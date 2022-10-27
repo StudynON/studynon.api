@@ -1,6 +1,6 @@
 import { StudentRepository } from '../repositories/StudentRepository';
 import { sign } from 'jsonwebtoken';
-import { jwt_secret } from '../../../config/vars';
+import { jwt_secret, jwtTokenExpire } from '../../../config/vars';
 import { HttpException } from '../../../errors/HttpException';
 import Validate from '../../../helpers/validate-parameters';
 import hash from 'bcrypt';
@@ -41,7 +41,7 @@ export class LoginStudent {
 
     const payload = {
       id: student.id,
-      exp: Math.floor(Date.now() / 1000) + 3600,
+      exp: jwtTokenExpire,
     };
 
     const token = sign(payload, jwt_secret);

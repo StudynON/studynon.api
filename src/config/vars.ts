@@ -18,3 +18,7 @@ export const PG_CONFIG = {
   host: process.env.PG_HOST,
   port: process.env.PG_PORT,
 };
+
+export const blackListKey = 'blocked-tokens';
+export const blackListExpire = 3600; // 36e2;
+export const jwtTokenExpire = Math.floor(Date.now() / 1000) + 3600; // 600;
