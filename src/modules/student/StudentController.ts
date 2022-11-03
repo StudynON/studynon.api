@@ -21,7 +21,7 @@ export default class StudentController {
   }
 
   static async update(req: Request, res: Response) {
-    const id = req.user?.id as string;
+    const id = req.student?.id as string;
 
     const { name, email, profile_picture, password } = req.body;
     const updateStudent = new UpdateStudent(repository);
@@ -32,7 +32,7 @@ export default class StudentController {
   }
 
   static async delete(req: Request, res: Response) {
-    const id = req.user?.id as string;
+    const id = req.student?.id as string;
 
     const deleteStudent = new DeleteStudent(repository);
 

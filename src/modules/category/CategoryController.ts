@@ -5,7 +5,7 @@ import { CreateCategory, DeleteCategory, FindAllCategories, FindOneCategoryById,
 const repository = new CategoryRepository();
 export default class CategoryController {
   static async create(req: Request, res: Response) {
-    const id_student = req.user?.id as string;
+    const id_student = req.student?.id as string;
     const { name, color } = req.body;
 
     const createCatgory = new CreateCategory(repository);
@@ -20,7 +20,7 @@ export default class CategoryController {
   }
 
   static async findOneCategoryById(req: Request, res: Response) {
-    const id_student = req.user?.id as string;
+    const id_student = req.student?.id as string;
     const { id } = req.body;
 
     const findOneCategory = new FindOneCategoryById(repository);
@@ -31,7 +31,7 @@ export default class CategoryController {
   }
 
   static async findAllCategories(req: Request, res: Response) {
-    const id_student = req.user?.id as string;
+    const id_student = req.student?.id as string;
 
     const findAllCategory = new FindAllCategories(repository);
 
@@ -41,7 +41,7 @@ export default class CategoryController {
   }
 
   static async updateCategory(req: Request, res: Response) {
-    const id_student = req.user?.id as string;
+    const id_student = req.student?.id as string;
     const { id, name, color } = req.body;
 
     const updateCategory = new UpdateCategory(repository);
@@ -56,7 +56,7 @@ export default class CategoryController {
   }
 
   static async deleteCategory(req: Request, res: Response) {
-    const id_student = req.user?.id as string;
+    const id_student = req.student?.id as string;
     const { id } = req.body;
 
     const deleteCategory = new DeleteCategory(repository);
