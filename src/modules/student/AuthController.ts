@@ -22,7 +22,7 @@ export default class AuthController {
 
   static async logout(req: Request, res: Response) {
     const authorization = req.headers.authorization as string;
-    const exp = req.user?.exp as number;
+    const exp = req.student?.exp as number;
 
     const token = authorization.split(' ')[1];
 

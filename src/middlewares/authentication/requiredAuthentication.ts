@@ -21,7 +21,7 @@ export const requiredAuthentication = (req: Request, res: Response, next: NextFu
       throw new HttpException(400, 'Invalid token');
     }
 
-    req.user = payload;
+    req.student = payload;
 
     return next();
   } catch {
