@@ -1,61 +1,70 @@
 import NodeCache from 'node-cache';
-import {
-  blackListKey as KEY,
-  blackListExpire
-} from '../config/vars';
+import { blackListExpire as EXPIRE } from '../config/vars';
 
-const myCache = new NodeCache({ checkperiod: blackListExpire });
+const myCache = new NodeCache();
 
-interface IBlacklistProps {
-  token: string;
-  exp: number;
+let period = false;
+
+function getCacheStatus(): boolean {
+  const cacheStats = myCache.getStats();
+
+  return cacheStats.keys > 0;
 }
 
-interface IBlockedTokensProps {
-  blockedTokens: Array<IBlacklistProps>;
+function getCacheKeys(): Array<string> {
+  const listTokens = myCache.keys();
+  return listTokens;
 }
 
-function saveCache(value: IBlockedTokensProps): boolean {
-  return myCache.set(KEY, value, blackListExpire);
+function delCache(token: string): void {
+  myCache.del(token);
 }
 
-function getCache(): IBlockedTokensProps {
-  const cache: IBlockedTokensProps = myCache.get(KEY) || {blockedTokens: []};
+function setCache(token: string, exp: number): boolean {
+  const status = myCache.set(token, exp);
+  return status;
+}
+
+function getCache(token: string): number {
+  const cache = myCache.get(token) as number;
   return cache;
 }
 
-export function verifyBlacklist(tokenToVerify: string): boolean {
-  const { blockedTokens } = getCache();
-  const { length } = blockedTokens;
-
-  for (let i = 0; i < length; i++) {
-    if (blockedTokens[i].token === tokenToVerify) {
-      return true;
-    }
-  }
-
-  return false;
+function now(): number {
+  const currentTimeInSeconds = Math.floor(Date.now() / 1000);
+  return currentTimeInSeconds;
 }
 
-export function addToBlacklist({token, exp}: IBlacklistProps) {
-  const { blockedTokens } = getCache();
-  const newBlackListItem = { token, exp };
-
-  blockedTokens.push(newBlackListItem);
-
-  saveCache({ blockedTokens });
+function validate(token: string) {
+  if (!checkToken(token)) delCache(token);
 }
 
-function onCacheExpire(key: string, { blockedTokens }: IBlockedTokensProps ){
-  const nowInSeconds = Date.now() / 1000;
+function checkPeriod(): void {
+  const keys = getCacheKeys();
 
-  function checkTime({exp}: IBlacklistProps) {
-    return exp > nowInSeconds;
-  }
+  period = false;
+  keys.forEach(validate);
 
-  blockedTokens = blockedTokens.filter(checkTime);
+  const status = getCacheStatus();
 
-  saveCache({ blockedTokens });
+  if (status) defineTimeout();
 }
 
-myCache.on('expired', onCacheExpire);
+function defineTimeout() {
+  if (period) return;
+
+  setTimeout(checkPeriod, EXPIRE);
+  period = true;
+}
+
+export function add(token: string, exp: number): void {
+  setCache(token, exp);
+  defineTimeout();
+}
+
+export function checkToken(token: string): boolean {
+  const cacheValue = getCache(token);
+  const timestamp = now();
+
+  return cacheValue > timestamp;
+}

@@ -17,7 +17,6 @@ export class LoginStudent {
     this.studentRepository = studentRepository;
   }
 
-
   public async execute ({email, password}: ILoginProps) {
     const invalidData = [];
 
@@ -41,7 +40,7 @@ export class LoginStudent {
 
     const payload = {
       id: student.id,
-      exp: jwtTokenExpire,
+      exp: jwtTokenExpire(),
     };
 
     const token = sign(payload, jwt_secret);
