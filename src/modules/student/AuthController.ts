@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import { StudentRepository } from './repositories/StudentRepository';
-import { LoginStudent } from './useCase/';
+import { LoginStudent, LogoutStudent } from './useCase/';
 
 const studentRepository = new StudentRepository();
 
-export default class LoginController {
+export default class AuthController {
   static async login(req: Request, res: Response) {
     const { email, password } = req.body;
 
@@ -18,5 +18,16 @@ export default class LoginController {
     return res.status(200).json({
       token: token
     });
+  }
+
+  static async logout(req: Request, res: Response) {
+    const authorization = req.headers.authorization as string;
+    const exp = req.user?.exp as number;
+
+    const token = authorization.split(' ')[1];
+
+    LogoutStudent.execute(token, exp);
+
+    return res.sendStatus(200);
   }
 }
