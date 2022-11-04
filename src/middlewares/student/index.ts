@@ -75,7 +75,7 @@ export function validateStudentId(
   res: Response,
   next: NextFunction
 ) {
-  const id = req.user?.id;
+  const id = req.student?.id;
   const missingData: string[] = [];
 
   if (!id) {

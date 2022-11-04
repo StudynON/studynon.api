@@ -18,3 +18,8 @@ export const PG_CONFIG = {
   host: process.env.PG_HOST,
   port: process.env.PG_PORT,
 };
+
+export const blackListExpire = env === 'production' ? 6048e5 : 1e4;
+export const jwtTokenExpire = () => {
+  return env === 'production' ? Math.floor(Date.now() / 1000) + 604800 : Math.floor(Date.now() / 1000) + 12;
+};

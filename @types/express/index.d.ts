@@ -8,6 +8,7 @@ declare global {
     export interface Request {
       student?: {
         id: string;
+        exp: number;
       }
     }
   }

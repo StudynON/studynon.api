@@ -11,7 +11,7 @@ export function validateCategory (
     name,
     color
   } = req.body;
-  const studentId = req.user?.id as string;
+  const studentId = req.student?.id as string;
 
   const missingData: string[] = [];
   const invalidData = [];
