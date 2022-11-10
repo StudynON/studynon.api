@@ -18,3 +18,6 @@ export const PG_CONFIG = {
   host: process.env.PG_HOST,
   port: process.env.PG_PORT,
 };
+export const swagger = process.env.PORT || '4000';
+
+

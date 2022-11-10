@@ -1,9 +1,10 @@
 NODE_ENV=development
 POSTGRES_USER=admin
 POSTGRES_PASSWORD=admin
-POSTGRES_DB=database
+POSTGRES_DB=database 
 PG_HOST=localhost
 PG_PORT=54320
 PORT=3333
+SWAGGER=4000
 JWT_SECRET=secret
 DATABASE_URL="postgresql://admin:admin@localhost:54320/database?schema=public"
