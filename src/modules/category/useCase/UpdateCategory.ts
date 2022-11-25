@@ -9,7 +9,7 @@ export class UpdateCategory {
   }
 
   async execute(
-    id: number,
+    id: string,
     {
       id_student,
       name,
