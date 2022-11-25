@@ -7,7 +7,7 @@ export default class DeleteMaterial {
     this.repository = repository;
   }
 
-  public async execute(id: number) {
+  public async execute(id: string) {
     return await this.repository.delete(id);
   }
 }
