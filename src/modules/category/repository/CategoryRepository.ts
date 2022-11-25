@@ -8,7 +8,7 @@ export class CategoryRepository {
     });
   }
 
-  async findOneById(id: number, studentId: string) {
+  async findOneById(id: string, studentId: string) {
     const category = await db.category.findFirst({
       where: {
         AND: [
@@ -39,7 +39,7 @@ export class CategoryRepository {
     return categorys;
   }
 
-  async update(id: number, data: ICategory) {
+  async update(id: string, data: ICategory) {
     await db.category.update({
       where: {
         id: id
@@ -48,7 +48,7 @@ export class CategoryRepository {
     });
   }
 
-  async delete(id: number) {
+  async delete(id: string) {
     await db.category.delete({
       where: {
         id: id
