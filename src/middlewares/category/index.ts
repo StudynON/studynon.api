@@ -78,8 +78,8 @@ export function validateIdCategory (
     );
   }
 
-  if (!Validate.isNumber(id)) {
-    invalidData.push('id must be a number');
+  if (!Validate.isString(id)) {
+    invalidData.push('id must be a string');
   }
 
   if (invalidData.length > 0) {

@@ -7,7 +7,7 @@ export default class FindOneMaterial {
     this.repository = repository;
   }
 
-  public async execute(id: number) {
+  public async execute(id: string) {
     return await this.repository.findOneById(id);
   }
 }

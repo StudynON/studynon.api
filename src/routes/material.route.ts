@@ -1,20 +1,36 @@
 import { Router } from 'express';
+import { requiredAuthentication } from '../middlewares/authentication/requiredAuthentication';
 import { validateIdMaterial, validateMaterial } from '../middlewares/materials';
 import MaterialController from '../modules/materials/MaterialController';
 
 export const materialRouter = Router();
 
-materialRouter.get('/', MaterialController.findAll);
+materialRouter.post('/',
+  requiredAuthentication,
+  validateMaterial,
+  MaterialController.create
+);
 
-materialRouter.get('/:id', validateIdMaterial, MaterialController.findOneById);
+materialRouter.get('/',
+  requiredAuthentication,
+  MaterialController.findAll
+);
 
-materialRouter.post('/', validateMaterial, MaterialController.create);
+materialRouter.get('/:id',
+  requiredAuthentication,
+  validateIdMaterial,
+  MaterialController.findOneById
+);
 
-materialRouter.put(
-  '/:id',
+materialRouter.put('/:id',
+  requiredAuthentication,
   validateIdMaterial,
   validateMaterial,
   MaterialController.update,
 );
 
-materialRouter.delete('/:id', validateIdMaterial, MaterialController.delete);
+materialRouter.delete('/:id',
+  requiredAuthentication,
+  validateIdMaterial,
+  MaterialController.delete
+);

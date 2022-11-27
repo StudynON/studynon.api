@@ -8,7 +8,7 @@ export class FindOneCategoryById {
     this.repository = repository;
   }
 
-  async execute(id: number, studentId: string): Promise<object> {
+  async execute(id: string, studentId: string): Promise<object> {
     const category = await this.repository.findOneById(id, studentId);
 
     if (!category) {

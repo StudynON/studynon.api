@@ -8,7 +8,7 @@ export class MaterialRepository {
     });
   }
 
-  async findOneById(id: number) {
+  async findOneById(id: string) {
     return await db.material.findUnique({
       where: { id },
       include: {
@@ -26,8 +26,11 @@ export class MaterialRepository {
     });
   }
 
-  async findAll() {
+  async findAll(id_student: string) {
     return await db.material.findMany({
+      where: {
+        id_student: id_student,
+      },
       include: {
         student: {
           select: {
@@ -43,14 +46,14 @@ export class MaterialRepository {
     });
   }
 
-  async update(id: number, material: IMaterial) {
+  async update(id: string, material: IMaterial) {
     return await db.material.update({
       where: { id },
       data: material,
     });
   }
 
-  async delete(id: number) {
+  async delete(id: string) {
     return await db.material.delete({
       where: { id },
     });

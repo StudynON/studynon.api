@@ -7,17 +7,16 @@ export function validateMaterial(
   res: Response,
   next: NextFunction,
 ) {
-  const { material } = req.body;
   const {
     media,
     link,
     title,
+    deadline,
     lifetime_access,
     school,
     id_category,
-    id_student,
-  } = material;
-  const deadline = material?.deadline;
+  } = req.body;
+  const id_student = req.student?.id as string;
   const missingData: string[] = [];
   const invalidData = [];
 
@@ -84,8 +83,8 @@ export function validateMaterial(
     invalidData.push('school must be string');
   }
 
-  if (!Validate.isNumber(id_category)) {
-    invalidData.push('id_category must be number');
+  if (!Validate.isString(id_category)) {
+    invalidData.push('id_category must be strinf');
   }
 
   if (!Validate.isString(id_student)) {
@@ -104,7 +103,7 @@ export function validateIdMaterial(
   res: Response,
   next: NextFunction,
 ) {
-  const id = parseInt(req.params.id);
+  const { id } = req.params;
   const missingData: string[] = [];
   const invalidData = [];
 
@@ -119,7 +118,7 @@ export function validateIdMaterial(
     );
   }
 
-  if (!Validate.isNumber(id)) {
+  if (!Validate.isString(id)) {
     invalidData.push('id');
   }
 

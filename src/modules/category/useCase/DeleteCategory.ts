@@ -8,7 +8,7 @@ export class DeleteCategory {
     this.repository = repository;
   }
 
-  async execute(id: number, id_student: string): Promise<void> {
+  async execute(id: string, id_student: string): Promise<void> {
     const category = await this.repository.findOneById(id, id_student);
 
     if (!category) {

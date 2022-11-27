@@ -7,7 +7,7 @@ export default class FindAllMaterial {
     this.repository = repository;
   }
 
-  public async execute() {
-    return await this.repository.findAll();
+  public async execute(id_student: string) {
+    return await this.repository.findAll(id_student);
   }
 }
